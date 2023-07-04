@@ -1,8 +1,8 @@
-public class TestDataFactory {
-    public static List<Order> createOrders(Integer numAccounts, Integer numOrdersPerAccount, String ordStatus) {
+public class TestDataFactoryP11 {
+    public static List<Order> makeOrders(Integer numAccounts, Integer numOrdersPerAccount, String ordStatus) {
 
         //Create a product
-        Product2 product = new Product2(Name = 'Chemise Verte longue XYX', Family = 'Chemise');
+        Product2 product = new Product2(Name = 'Chemise Bleue longue XYX', Family = 'Chemise');
         Insert product;
 
         //Create the PricebookEntry
