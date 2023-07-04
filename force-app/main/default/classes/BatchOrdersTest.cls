@@ -12,16 +12,7 @@ private class BatchOrdersTest {
     BatchOrders batch = new BatchOrders();
     Id batchId = Database.executeBatch(batch);
     Test.stopTest();
-/*
-  	 Account testAccountAfterUpdate = [SELECT Id FROM Account WHERE Name LIKE 'TestAccount%'];
-
-     Task TaskafterUpdate = [SELECT Id,Priority,Subject,Status FROM TASK WHERE WhatId = :testAccountAfterUpdate.Id LIMIT 1];
-      
-		System.assertEquals('Normal', TaskafterUpdate.Priority);
-        System.assertEquals('Call', TaskafterUpdate.Subject);
-        System.assertEquals('New', TaskafterUpdate.Status);
-*/
-      
+     
       
    List<Task> tasks =
 [SELECT Id,
