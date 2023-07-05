@@ -80,7 +80,7 @@ public with sharing class OrderManager {
         acc.Active__c = false;
       } // Set the desired value (e.g., 'false') to update the checkbox field
       accountsToUpdate.add(acc); // Add the Account record to the list for update
-      update accountsToUpdate;
     }
+    update accountsToUpdate;
   }
 }
