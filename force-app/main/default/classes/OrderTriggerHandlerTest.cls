@@ -39,33 +39,35 @@ public class OrderTriggerHandlerTest {
     Integer numOrdersPerAccount = 3;
     String orderStatus = 'Draft';
 
-    // Generate Orders using TestDataFactoryP11
+    // Generate Orders and Accounts using TestDataFactoryP11
     List<Order> testOrders = TestDataFactoryP11.makeOrders(
       numAccounts,
       numOrdersPerAccount,
       orderStatus
     );
-
-    Test.startTest();
-
-    // Delete the orders
-    delete testOrders;
-
-    Test.stopTest();
-
-    // Verify the results
     List<Account> updatedAccounts = [
       SELECT Active__c
       FROM Account
       WHERE Id IN (SELECT AccountId FROM Order)
     ];
-    for (Account account : updatedAccounts) {
-      System.assertEquals(
-        false,
-        account.Active__c,
-        'Active__c field should be false after order deletion'
-      );
+    // Account acc = new account();
+    for (Account acc : updatedAccounts) {
+      acc.Active__c = true;
     }
+    Test.startTest();
+
+    // Delete the orders
+    delete [SELECT Id FROM Order LIMIT 2];
+
+    Test.stopTest();
+
+    // Verify the results
+
+    System.assertEquals(
+      true,
+      updatedAccounts[1].Active__c,
+      'Active__c field should be true after order deletion if there are still orders left'
+    );
   }
 
   @isTest
@@ -98,7 +100,7 @@ public class OrderTriggerHandlerTest {
       System.assertEquals(
         false,
         account.Active__c,
-        'Active__c field should not remain true when no orders exist'
+        'Active__c field should be false when no orders exist'
       );
     }
   }

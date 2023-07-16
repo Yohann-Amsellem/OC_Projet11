@@ -31,10 +31,6 @@ public class OrderTriggerHandler {
   }
 
   public static Boolean hasProducts(Id orderId) {
-    // Implementation to check if the order has products
-    // You can customize this logic based on your data model
-
-    // Example implementation:
     List<OrderItem> orderItems = [
       SELECT Id
       FROM OrderItem
@@ -45,10 +41,6 @@ public class OrderTriggerHandler {
   }
 
   public static Boolean hasErrors(Order order) {
-    // Implementation to check if the order has errors
-    // You can customize this logic based on your requirements
-
-    // Example implementation:
     return order.HasErrors();
   }
 
